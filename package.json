@@ -4,7 +4,19 @@
   "type": "module",
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.7.0",
-    "eslint": "^9.0.0"
+    "@web/test-runner": "^0.18.1",
+    "eslint": "^9.0.0",
+    "eslint-plugin-jsdoc": "^48.2.3",
+    "@koa/cors": "^5.0.0",
+    "@koa/router": "^12.0.1",
+    "@lit-labs/ssr": "^3.2.2",
+    "@lit-labs/ssr-client": "^1.1.7",
+    "@webcomponents/template-shadowroot": "^0.2.1",
+    "globals": "^15.0.0",
+    "koa": "^2.15.0",
+    "koa-favicon": "^2.1.0",
+    "koa-node-resolve": "^1.0.0-pre.9",
+    "koa-static": "^5.0.0"
   },
   "scripts": {
     "start": "bun app.js",
@@ -14,19 +26,6 @@
     "format": "eslint --fix"
   },
   "dependencies": {
-    "@koa/cors": "^5.0.0",
-    "@koa/router": "^12.0.1",
-    "@lit-labs/ssr": "^3.2.2",
-    "@lit-labs/ssr-client": "^1.1.7",
-    "@web/test-runner": "^0.18.1",
-    "@webcomponents/template-shadowroot": "^0.2.1",
-    "eslint-plugin-jsdoc": "^48.2.3",
-    "globals": "^15.0.0",
-    "koa": "^2.15.0",
-    "koa-bodyparser": "^4.4.1",
-    "koa-favicon": "^2.1.0",
-    "koa-node-resolve": "^1.0.0-pre.9",
-    "koa-static": "^5.0.0",
     "lit": "^3.1.2"
   }
 }
