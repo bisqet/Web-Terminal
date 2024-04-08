@@ -7,19 +7,20 @@ import {cd} from "./Cd/Cd.js";
 export class CommandsMap extends Map {
 
 
-    constructor(commands) {
-        super();
-        commands.forEach((command) => {
-            this.set(command.name, command);
-        });
+  constructor(commands) {
+    super();
+    commands.forEach((command) => {
+      this.set(command.name, command);
+    });
+  }
+
+  get(name) {
+    const command = super.get(name);
+    if(command === undefined) {
+      return commandNotFound;
     }
-    get(name) {
-        const command = super.get(name);
-        if(command === undefined) {
-return commandNotFound;
-}
-        return command;
-    }
+    return command;
+  }
 
 }
 
