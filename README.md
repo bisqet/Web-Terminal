@@ -56,5 +56,5 @@ This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) i
 - [ ] General:
   - [ ] Transfer `testParentComponent` and all needed for development to demo folder
 - [ ] Tests: 
-  - [ ] Write tests for 
+  - [ ] Write tests with `@web/test-runner`
 - [ ] No ESLint Errors
