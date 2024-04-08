@@ -27,4 +27,4 @@ export const terminalInputStyles = css`
     display: inline-flex;
     cursor: text;
   }
-`
+`;

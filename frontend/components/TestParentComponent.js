@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import {LitElement, html} from 'lit';
 
 import './terminal-app/terminal-app.js';
 import {sharedStyles} from "./css/sharedStyles.js";
@@ -15,9 +15,9 @@ export class TestParentComponent extends LitElement {
     static styles = [sharedStyles, testAppStyles];
 
     static properties = {
-        randomValue: { type: Number },
-        fileSystem: { type: FileSystem },
-        superRootDir: { type: SuperRootDir },
+        randomValue: {type: Number},
+        fileSystem: {type: FileSystem},
+        superRootDir: {type: SuperRootDir},
     };
 
     constructor() {
@@ -28,7 +28,7 @@ export class TestParentComponent extends LitElement {
 
 
     render() {
-        console.warn(this.superRootDir)
+        console.warn(this.superRootDir);
         return html`
             <main class="main">
                 <terminal-app .superRootDir=${this.superRootDir} .path="${this.superRootDir.path}" .history=${getInitialHistory(this.randomValue)}></terminal-app>
@@ -41,8 +41,8 @@ export class TestParentComponent extends LitElement {
         this.updateFS();
     }
 
-    async updateFS(){
-        this.fileSystem = await createFileSystem({type:'emulated'}).then(fs => this.fileSystem = fs)
-        this.superRootDir = new SuperRootDir([this.fileSystem])
+    async updateFS() {
+        this.fileSystem = await createFileSystem({type: 'emulated'}).then(fs => this.fileSystem = fs);
+        this.superRootDir = new SuperRootDir([this.fileSystem]);
     }
 }

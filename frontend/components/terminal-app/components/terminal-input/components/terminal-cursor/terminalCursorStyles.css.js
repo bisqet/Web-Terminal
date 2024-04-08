@@ -37,4 +37,4 @@ export const terminalCursorStyles = css`
           background: transparent;
         }
       }
-    `
+    `;

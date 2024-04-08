@@ -17,16 +17,16 @@ export class TerminalInput extends LitElement {
         path: {type: String},
         cursorOffset: {type: String},
         history: {type: Array}
-    }
+    };
 
     // noinspection CssInvalidPropertyValue
-    static styles = terminalInputStyles
+    static styles = terminalInputStyles;
 
     constructor() {
         super();
         this.value = '';
-        this.inputWidth = '0px'
-        this.cursorOffset = "0ch"
+        this.inputWidth = '0px';
+        this.cursorOffset = "0ch";
         this.focused = false;
         this.typing = false;
         this.path = "";
@@ -36,7 +36,7 @@ export class TerminalInput extends LitElement {
 
 
     render() {
-        console.log('render TerminalInput')
+        console.log('render TerminalInput');
         return html`
             <label for="input">
                 <terminal-path .path="${this.path}"></terminal-path>
@@ -45,7 +45,7 @@ export class TerminalInput extends LitElement {
                        @input="${this.#handleInput}" @keydown="${this.#handleKeyDown}">
                 <terminal-cursor .typing=${this.typing} .focused=${this.focused} style=${styleMap({right: this.cursorOffset})}></terminal-cursor>
             </label>
-        `
+        `;
     }
 
     #handleInput() {
@@ -54,76 +54,80 @@ export class TerminalInput extends LitElement {
         this.#recalculateCursorOffset();
     }
 
-    #subscribeOnInputChange(){
+    #subscribeOnInputChange() {
         document.addEventListener("selectionchange", this.#recalculateCursorOffset.bind(this));
     }
-    #recalculateCursorOffset(){
-        const inputLength = this.value.length
-        if(inputLength===0){
+    #recalculateCursorOffset() {
+        const inputLength = this.value.length;
+        if(inputLength === 0) {
             this.cursorOffset = 0;
             return;
         }
-        if(this.#input.selectionDirection==='forward'){
-            this.cursorOffset = (inputLength - this.#input?.selectionEnd)+"ch"
+        if(this.#input.selectionDirection === 'forward') {
+            this.cursorOffset = `${inputLength - this.#input?.selectionEnd}ch`;
         }
-        if(this.#input.selectionDirection==='backward'){
-            this.cursorOffset = (inputLength - this.#input?.selectionStart)+"ch"
+        if(this.#input.selectionDirection === 'backward') {
+            this.cursorOffset = `${inputLength - this.#input?.selectionStart}ch`;
         }
     }
 
 
     #handleKeyDown(keyboardEvent) {
-        if (keyboardEvent.key === "Enter") {
+        if(keyboardEvent.key === "Enter") {
             console.log('Enter pressed');
-            const command = {path: this.path, input: this.value}
+            const command = {path: this.path, input: this.value};
             this.executeCommand(command);
             // TODO: change this.#recalculateCursorOffset(); here and inside ArrowUp and ArrowDown cases
             // recalculateCursorOffset when input changes and selectionchange not fired so cursor offset is the same as before
             // Steps to reproduce: type qweqweqweqweqweqwe then select few positions left and press enter
             this.#recalculateCursorOffset();
         }
-        if (keyboardEvent.ctrlKey === true && keyboardEvent.code === "KeyC") {
+        if(keyboardEvent.ctrlKey === true && keyboardEvent.code === "KeyC") {
             // TODO: not execute when user use ctrl+c to copy selected value
-            console.log('Ctrl+C')
-            const command = {path: this.path, input: this.value, abort:true}
+            console.log('Ctrl+C');
+            const command = {path: this.path, input: this.value, abort: true};
 
-            this.executeCommand(command)
+            this.executeCommand(command);
         }
-        if(keyboardEvent.code === "ArrowUp"){
+        if(keyboardEvent.code === "ArrowUp") {
             this.value = this.history.at(-1).input || "";
             // TODO: proper history with save working draft
             this.#recalculateCursorOffset();
         }
-        if(keyboardEvent.code === "ArrowDown"){
+        if(keyboardEvent.code === "ArrowDown") {
             //this.value = Array.at(-1, this.history)
             this.#recalculateCursorOffset();
         }
     }
-    executeCommand(command){
+    executeCommand(command) {
         const executeCommandEvent = new CustomEvent("executeCommand", {detail: command});
-        console.log(executeCommandEvent)
+        console.log(executeCommandEvent);
         this.dispatchEvent(executeCommandEvent);
-        this.value = ""
+        this.value = "";
     }
 
     #setTyping() {
-        if (this.typing === true) return;
+        if(this.typing === true) {
+return;
+}
         this.typing = true;
         setTimeout(() => {
             this.typing = false;
-        }, 1000)
+        }, 1000);
     }
 
     resizeInput() {
         // Get the width of the text inside the input
-        if (this.#textWidthMeasureContext === undefined) return;
-        const textWidth = TerminalInput.#getTextWidth(this.value, this.#inputFontComputedStyle, this.#textWidthMeasureContext)
+        if(this.#textWidthMeasureContext === undefined) {
+return;
+}
+        const textWidth = TerminalInput.#getTextWidth(this.value, this.#inputFontComputedStyle, this.#textWidthMeasureContext);
         // Set the input width to the width of the text plus some padding
-        this.inputWidth = (textWidth) + 'px';
+        this.inputWidth = `${textWidth  }px`;
         //console.log('resizeInput', this.inputWidth )
     }
 
-    static #getTextWidth(value = "", font = "", context) {
+    static#getTextWidth(value = "", font = "", context) {
         // Set the font for the canvas
         context.font = font;
         // Measure the width of the text using the canvas
@@ -135,36 +139,40 @@ export class TerminalInput extends LitElement {
 
     firstUpdated(_changedProperties) {
         super.firstUpdated(_changedProperties);
-        this.#input = this.shadowRoot.getElementById('input')
-        this.#inputFontComputedStyle = getComputedStyle(this.#input)["font"]
+        this.#input = this.shadowRoot.getElementById('input');
+        this.#inputFontComputedStyle = getComputedStyle(this.#input).font;
         this.#textWidthMeasureContext = TerminalInput.#createTextWidthMeasureContext();
         this.resizeInput();
-        this.#subscribeOnInputChange()
+        this.#subscribeOnInputChange();
     }
 
     willUpdate(_changedProperties) {
-        console.log('willUpdate', _changedProperties)
-        if (_changedProperties.has('value')) {
+        console.log('willUpdate', _changedProperties);
+        if(_changedProperties.has('value')) {
             this.resizeInput();
         }
     }
     shouldUpdate(_changedProperties) {
         return super.shouldUpdate(_changedProperties);
-        if (_changedProperties.has('history')) return false;
+        if(_changedProperties.has('history')) {
+return false;
+}
         return true;
     }
 
     updated(_changedProperties) {
-        console.log(_changedProperties)
+        console.log(_changedProperties);
         super.updated(_changedProperties);
-        if (_changedProperties.has('focused')) {
-            if (this.focused === true) this.#input.focus();
+        if(_changedProperties.has('focused')) {
+            if(this.focused === true) {
+this.#input.focus();
+}
         }
     }
 
-    static #createTextWidthMeasureContext() {
+    static#createTextWidthMeasureContext() {
         const canvas = new OffscreenCanvas(0, 0);
-        return canvas.getContext('2d')
+        return canvas.getContext('2d');
     }
 
 }

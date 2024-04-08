@@ -10,4 +10,4 @@ export const terminalPathStyles = css`
     display: inline-block;
     margin-right: 1ch;
   }
-`
+`;

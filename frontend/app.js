@@ -1,7 +1,12 @@
-import { render } from '@lit-labs/ssr';
-import { html } from 'lit';
+import {render} from '@lit-labs/ssr';
+import {html} from 'lit';
 import './components/test-parent-component.js';
 
+/**
+ *
+ * @param root0
+ * @param root0.randomValue
+ */
 export function* frontendEntryPoint({randomValue}) {
     yield `
     <!doctype html>

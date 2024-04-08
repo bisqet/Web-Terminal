@@ -9,4 +9,4 @@ export class WelcomeASCIIArt extends LitElement {
 
 customElements.define('welcome-ascii-art', WelcomeASCIIArt);
 
-export const historyRecordArt = {result:html`<welcome-ascii-art></welcome-ascii-art>`}
+export const historyRecordArt = {result: html`<welcome-ascii-art></welcome-ascii-art>`};

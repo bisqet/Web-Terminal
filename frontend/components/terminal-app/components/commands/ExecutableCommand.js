@@ -16,11 +16,11 @@ export class ExecutableCommand {
     }
 
     execute(userCommand) {
-        console.log(userCommand)
-        if (userCommand.abort) {
-            return new CommandResponse({...userCommand, input: userCommand.input + "^C"})
+        console.log(userCommand);
+        if(userCommand.abort) {
+            return new CommandResponse({...userCommand, input: `${userCommand.input  }^C`});
         }
-        return new CommandResponse(userCommand)
+        return new CommandResponse(userCommand);
     }
 }
 //TODO: add layer to execute by aliases

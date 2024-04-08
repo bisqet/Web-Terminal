@@ -4,4 +4,4 @@ export const terminalHistoryStyles = css`
   :host {
     line-break: anywhere;
   }
-`
+`;

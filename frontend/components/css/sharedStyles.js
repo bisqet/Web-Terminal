@@ -8,4 +8,4 @@ export const sharedStyles = css`
     --font-size-primary: 16px;
     --font-family-primary: "Source Code Pro";
   }
-`
+`;

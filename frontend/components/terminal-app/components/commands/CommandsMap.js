@@ -11,11 +11,13 @@ export class CommandsMap extends Map {
         super();
         commands.forEach((command) => {
             this.set(command.name, command);
-        })
+        });
     }
-    get(name){
+    get(name) {
         const command = super.get(name);
-        if(command===undefined)return commandNotFound
+        if(command === undefined) {
+return commandNotFound;
+}
         return command;
     }
 

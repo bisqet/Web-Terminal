@@ -4,4 +4,4 @@ export const historyRecordStyles = css`
     .pathAndInput{
       display: flex;
     }
-`
+`;

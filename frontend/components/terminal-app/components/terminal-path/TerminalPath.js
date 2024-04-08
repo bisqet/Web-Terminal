@@ -1,4 +1,4 @@
-import { html, LitElement} from "lit";
+import {html, LitElement} from "lit";
 import {terminalPathStyles} from "./terminalPathStyles.css.js";
 
 export class TerminalPath extends LitElement {
@@ -9,13 +9,13 @@ export class TerminalPath extends LitElement {
 
     constructor() {
         super();
-        this.path = ""
+        this.path = "";
     }
 
     render() {
         return html`
             <span>${this.path}</span><span class="spanWithDivider">$</span>
-        `
+        `;
     }
 
 }

@@ -30,4 +30,4 @@ export const welcomeASCIIArtHistoryRecord = html`
   #   #      #   #  #    # # #   ## #    # #     
   #   ###### #    # #    # # #    # #    # ######
 </pre></span>
-`
+`;

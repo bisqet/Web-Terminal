@@ -9,4 +9,4 @@ export const testAppStyles = css`
         justify-content: center;
         align-items: center;
       }
-    `
+    `;
