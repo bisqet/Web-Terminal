@@ -4,7 +4,6 @@
   "type": "module",
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.7.0",
-    "bun-types": "latest",
     "eslint": "^9.0.0"
   },
   "scripts": {
@@ -13,9 +12,6 @@
     "watch": "bun --watch app.js",
     "lint": "eslint",
     "format": "eslint --fix"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
   },
   "dependencies": {
     "@koa/cors": "^5.0.0",
