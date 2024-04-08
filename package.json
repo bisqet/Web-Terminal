@@ -1,15 +1,39 @@
 {
-  "name": "portfolio",
-  "version": "1.0.50",
+  "name": "terminal",
+  "module": "app.js",
+  "type": "module",
+  "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^1.7.0",
+    "bun-types": "latest",
+    "eslint": "^9.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "start": "bun app.js",
+    "debug": "bun --inspect app.js",
+    "watch": "bun --watch app.js",
+    "lint:eslint": "eslint .js,.html .",
+    "format:eslint": "eslint .js,.html . --fix",
+    "lint:prettier": "prettier \"**/*.js\" \"**/*.html\"  -c || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+    "format:prettier": "prettier \"**/*.js\" \"**/*.html\"  --write",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   },
   "dependencies": {
-    "elysia": "latest"
-  },
-  "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
+    "@koa/cors": "^5.0.0",
+    "@koa/router": "^12.0.1",
+    "@lit-labs/ssr": "^3.2.2",
+    "@lit-labs/ssr-client": "^1.1.7",
+    "@web/test-runner": "^0.18.1",
+    "@webcomponents/template-shadowroot": "^0.2.1",
+    "koa": "^2.15.0",
+    "koa-bodyparser": "^4.4.1",
+    "koa-favicon": "^2.1.0",
+    "koa-node-resolve": "^1.0.0-pre.9",
+    "koa-static": "^5.0.0",
+    "lit": "^3.1.2",
+    "prettier": "^3.2.5"
+  }
 }
