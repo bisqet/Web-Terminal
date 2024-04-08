@@ -54,7 +54,7 @@ This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) i
     - [ ] transfer all frontend deps to separate folder keeping w/o build development (mean transfer node_modules to
       frontend so serve ./frontend not ./)\
 - [ ] General:
-  - Transfer testParentComponent and all needed for development to demo folder
+  - [ ] Transfer testParentComponent and all needed for development to demo folder
 - [ ] Tests: 
-  - Write tests for 
+  - [ ] Write tests for 
 - [ ] No ESLint Errors
