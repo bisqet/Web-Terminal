@@ -24,7 +24,7 @@ export class CommandsMap extends Map {
 
 }
 
-const commands = [ls, help, commandNotFound, mkfs, cd];
+const commands = [ls, help, mkfs, cd]; // CommandNotFound should not be listed
 export const commandsMap = new CommandsMap(commands);
 // TODO: make commands importable or not.
 // Right now all the builtin commands imported into the final bundle
