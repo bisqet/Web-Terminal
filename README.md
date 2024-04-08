@@ -29,6 +29,7 @@ This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) i
 
 - Should we have WASM API to include commands?
     - We will need example wasm command with an api
+- Change component HTML tag from terminal-app to web-terminal?
 
 ## TODO:
 
