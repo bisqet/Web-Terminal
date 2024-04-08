@@ -5,7 +5,7 @@ import './components/test-parent-component.js';
 export function* frontendEntryPoint({randomValue}) {
     yield `
     <!doctype html>
-    <html>
+    <html lang="en">
       <head>
         <title>Personal Terminal</title>
         <style>

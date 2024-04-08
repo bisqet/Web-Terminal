@@ -1,5 +1,3 @@
-import path from "node:path";
-
 import Koa from "koa";
 
 import cors from "@koa/cors";
@@ -9,8 +7,6 @@ import Router from "@koa/router";
 import favicon from "koa-favicon";
 
 import koaStatic from "koa-static";
-
-import bodyParser from "koa-bodyparser";
 
 import { nodeResolve } from 'koa-node-resolve';
 
