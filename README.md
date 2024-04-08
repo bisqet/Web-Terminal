@@ -1,5 +1,5 @@
 # Web Terminal Component
-
+![Screenshot.png](frontend/img/screenshot.png)
 To install dependencies:
 
 ```bash
