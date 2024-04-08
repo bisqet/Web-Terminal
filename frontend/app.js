@@ -8,7 +8,7 @@ import './components/test-parent-component.js';
  * @param root0.randomValue
  */
 export function* frontendEntryPoint({randomValue}) {
-    yield `
+  yield `
     <!doctype html>
     <html lang="en">
       <head>
@@ -42,8 +42,9 @@ export function* frontendEntryPoint({randomValue}) {
           }
         </script>
   `;
-    yield* render(html`<test-parent-component randomValue=${randomValue}></test-parent-component>`);
-    yield `
+  yield* render(html`
+    <test-parent-component randomValue=${randomValue}></test-parent-component>`);
+  yield `
       <script type="module">
         // Start fetching the Lit hydration support module (note the absence
         // of "await" -- we don't want to block yet).

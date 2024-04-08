@@ -30,10 +30,10 @@ export class TerminalApp extends LitElement {
 
     return html`
       <div class="main scrollbar" @focusin="${() => {
-        this.setFocused(true);
-      }}" @focusout="${() => {
-        this.setFocused(false);
-      }}" tabindex="-1">
+    this.setFocused(true);
+  }}" @focusout="${() => {
+  this.setFocused(false);
+}}" tabindex="-1">
 
         <terminal-history .history="${this.history}"></terminal-history>
         <terminal-input @executeCommand="${this.executeCommand}" value="${this.randomValue}"

@@ -16,7 +16,7 @@ export class CommandsMap extends Map {
 
   get(name) {
     const command = super.get(name);
-    if(command === undefined) {
+    if (command === undefined) {
       return commandNotFound;
     }
     return command;

@@ -8,14 +8,14 @@ import favicon from "koa-favicon";
 
 import koaStatic from "koa-static";
 
-import { nodeResolve } from 'koa-node-resolve';
+import {nodeResolve} from 'koa-node-resolve';
 
-import { RenderResultReadable } from '@lit-labs/ssr/lib/render-result-readable.js';
+import {RenderResultReadable} from '@lit-labs/ssr/lib/render-result-readable.js';
 
 
 import {config} from "./config";
 
-import { frontendEntryPoint } from './frontend/app.js';
+import {frontendEntryPoint} from './frontend/app.js';
 
 const app = new Koa();
 
@@ -24,26 +24,26 @@ const {port} = config;
 const router = new Router();
 
 router.get('/', async ctx => {
-    ctx.type = 'text/html';
-    ctx.body = new RenderResultReadable(frontendEntryPoint({randomValue:Math.random()}));
+  ctx.type = 'text/html';
+  ctx.body = new RenderResultReadable(frontendEntryPoint({randomValue: Math.random()}));
 });
 
 app
-    .use(
-        cors({
-            origin: '*',
-        }),
-    )
-    // .use(bodyParser())
-    .use(nodeResolve())
-    .use(router.routes())
-    .use(router.allowedMethods())
-    .use(favicon(config.favicon))
-    .use(koaStatic('.'))
-    .use(async (ctx, next) => {
-        console.log(ctx);
-        next();
-    })
+  .use(
+    cors({
+      origin: '*',
+    }),
+  )
+  // .use(bodyParser())
+  .use(nodeResolve())
+  .use(router.routes())
+  .use(router.allowedMethods())
+  .use(favicon(config.favicon))
+  .use(koaStatic('.'))
+  .use(async (ctx, next) => {
+    console.log(ctx);
+    next();
+  })
 
 app.listen(port.http);
 /*

@@ -13,18 +13,18 @@ export class UserCommand {
   static defaultPath = '/';
 
   constructor({
-                path = UserCommand.defaultPath,
-                input = '',
-                command = '',
-                options = [],
-                args = [],
-                environment = UserCommand.defaultEnvironment,
-                abort = false,
-                result: undefined,
-              }) {
+    path = UserCommand.defaultPath,
+    input = '',
+    command = '',
+    options = [],
+    args = [],
+    environment = UserCommand.defaultEnvironment,
+    abort = false,
+    result: undefined,
+  }) {
     this.input = input.trim();
     let parsedInput = new ParsedInput({});
-    if(this.input && this.input.length !== 0) {
+    if (this.input && this.input.length !== 0) {
       parsedInput = UserCommand.parseInput(this.input);
     }
     this.abort = abort;
@@ -36,9 +36,9 @@ export class UserCommand {
   }
 
   static parseInput(input) {
-    if(input === undefined || input === '') {
-return;
-}
+    if (input === undefined || input === '') {
+      return;
+    }
     // Regular expression to match tokens with or without quotes, including options with values
     const tokenRegex = /('[^']*'|"[^"]*"|\S+=(?:'[^']*'|"[^"]*"|\S+)|\S+)/g;
 
@@ -49,10 +49,9 @@ return;
 
     // Iterate over tokens and categorize them as options or arguments
     for(const token of tokens) {
-      if(token.startsWith('-')) {
+      if (token.startsWith('-')) {
         options.push(token);
-      }
- else {
+      }else {
         args.push(token);
       }
     }

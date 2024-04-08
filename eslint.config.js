@@ -18,12 +18,12 @@ export default[jsdoc.configs['flat/recommended'],
       jsdoc,
     }, rules: {
       "@stylistic/js/linebreak-style": [2, "unix"],
-      "@stylistic/js/semi": [2, "always"],
+      "@stylistic/js/indent": [2, 2],
       "@stylistic/js/no-extra-parens": 1,
       "@stylistic/js/eol-last": [2, "always"],
-      "@stylistic/js/array-bracket-spacing": [2, "never"],
-      "@stylistic/js/block-spacing": [2, "never"],
-      "@stylistic/js/brace-style": [2, "stroustrup"],
+      "@stylistic/js/array-bracket-spacing": [0, "never"],
+      "@stylistic/js/block-spacing": [2, "always"],
+      "@stylistic/js/brace-style": [2, "1tbs"],
       "@stylistic/js/comma-spacing": [2, {
         "before": false, "after": true
       }],
@@ -32,8 +32,9 @@ export default[jsdoc.configs['flat/recommended'],
       "@stylistic/js/key-spacing": [2, {
         "beforeColon": false, "afterColon": true
       }],
+      "@stylistic/js/function-paren-newline": ["error", "multiline"],
       "@stylistic/js/no-trailing-spaces": [2, {
-        "skipBlankLines": true
+        "skipBlankLines": false
       }],
       "@stylistic/js/keyword-spacing": [2, {
         "before": false, "after": false, "overrides": {
@@ -44,6 +45,8 @@ export default[jsdoc.configs['flat/recommended'],
           }, "import": {
             "after": true
           }, "else": {
+            "after": true
+          }, "if": {
             "after": true
           }, "do": {
             "after": true
@@ -61,7 +64,7 @@ export default[jsdoc.configs['flat/recommended'],
         }
       }],
       "@stylistic/js/no-whitespace-before-property": 2,
-      "@stylistic/js/object-curly-spacing": [2, "never"],
+      "@stylistic/js/object-curly-spacing": [0, "never"],
       "@stylistic/js/semi-spacing": [2, {
         "before": false, "after": true
       }],
@@ -85,7 +88,7 @@ export default[jsdoc.configs['flat/recommended'],
       "no-irregular-whitespace": 2,
       "curly": [2, "all"],
       "dot-notation": 2,
-      "eqeqeq": [2, "always"],
+      "eqeqeq": [2, "always", {"null": "ignore"}],
       "no-else-return": 2,
       "no-extra-bind": 2,
       "no-implied-eval": 2,
