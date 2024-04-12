@@ -18,7 +18,9 @@ export default[jsdoc.configs['flat/recommended'],
       jsdoc,
     }, rules: {
       "@stylistic/js/linebreak-style": [2, "unix"],
-      "@stylistic/js/indent": [2, 2],
+      "@stylistic/js/indent": [2, 2, {
+        ignoredNodes: ["BlockStatement"]
+      }],
       "@stylistic/js/no-extra-parens": 1,
       "@stylistic/js/eol-last": [2, "always"],
       "@stylistic/js/array-bracket-spacing": [0, "never"],
@@ -60,7 +62,11 @@ export default[jsdoc.configs['flat/recommended'],
             "after": true
           }, "from": {
             "before": true, "after": true
-          }
+          }, "static": {
+            "after": true
+          }, "for": {
+            "after": true
+          },
         }
       }],
       "@stylistic/js/no-whitespace-before-property": 2,
@@ -68,7 +74,9 @@ export default[jsdoc.configs['flat/recommended'],
       "@stylistic/js/semi-spacing": [2, {
         "before": false, "after": true
       }],
-      "@stylistic/js/space-before-blocks": 2,
+      "@stylistic/js/space-before-blocks": [2, {
+        "keywords": "always"
+      }],
       "@stylistic/js/space-before-function-paren": [2, {
         "anonymous": "never",
         "named": "never",
@@ -86,7 +94,7 @@ export default[jsdoc.configs['flat/recommended'],
       "no-console": 0,
       "no-unexpected-multiline": "off",
       "no-irregular-whitespace": 2,
-      "curly": [2, "all"],
+      "curly": [2, "multi-or-nest"],
       "dot-notation": 2,
       "eqeqeq": [2, "always", {"null": "ignore"}],
       "no-else-return": 2,
@@ -97,7 +105,7 @@ export default[jsdoc.configs['flat/recommended'],
         "ignore": [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 10, 100, 250, 500, 1000], "ignoreArrayIndexes": true
       }],
       "no-native-reassign": 2,
-      "no-param-reassign": 2,
+      "no-param-reassign": 1,
       "no-useless-call": 2,
       "no-useless-concat": 2,
       "no-useless-escape": 2,
