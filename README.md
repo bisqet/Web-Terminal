@@ -21,6 +21,8 @@ This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) i
     - [ ] Use usual fs which user allow access
     - [ ] Change `<terminal-path>` and all internal components to use `FileSystemDirectoryHandle`/`FileSystemFileHandle` instead of cringe `pathWithoutFsArray`, `fsPath` and `pathArray`
 - [ ] General commands
+    - [ ] mkdir
+    - [ ] touch
     - [ ] cd
     - [ ] ls
     - [ ] cat
