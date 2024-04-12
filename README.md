@@ -19,6 +19,7 @@ This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) i
 - [ ] Filesystem
     - [ ] Emulated in browser fs
     - [ ] Use usual fs which user allow access
+    - [ ] Change `<terminal-path>` and all internal components to use `FileSystemDirectoryHandle`/`FileSystemFileHandle` instead of cringe `pathWithoutFsArray`, `fsPath` and `pathArray`
 - [ ] General commands
     - [ ] cd
     - [ ] ls
@@ -27,9 +28,12 @@ This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) i
 
 ## General questions
 
+- Should we create emulated FS `createFileSystem({type:"emulated"})` inside `TerminalApp`, or we should get it from public API, or both ways?
+  - The question is tricky because createFileSystem is async operation and seems like no way for it to be sync without tricky wrappers
 - Should we have WASM API to include commands?
     - We will need example wasm command with an api
-- Change component HTML tag from terminal-app to web-terminal?
+- Change component HTML tag from `<terminal-app>` to `<web-terminal>`?
+
 
 ## TODO:
 
