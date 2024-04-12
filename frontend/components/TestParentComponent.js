@@ -4,11 +4,8 @@ import './terminal-app/terminal-app.js';
 import {sharedStyles} from "./css/sharedStyles.js";
 import {testAppStyles} from "./css/testAppStyles.css.js";
 import {getInitialHistory} from "./initialHistory/getInitialHistory.js";
-import {
-  createFileSystem,
-  FileSystem,
-  SuperRootDir
-} from "./terminal-app/components/FileSystem/FileSystem.js";
+import {SuperRootDir} from "./terminal-app/components/SuperRootDir/SuperRootDir.js";
+import {createFileSystem} from "./terminal-app/components/SuperRootDir/FileSystem/createFileSystem.js";
 
 
 export class TestParentComponent extends LitElement {
@@ -16,7 +13,7 @@ export class TestParentComponent extends LitElement {
 
   static properties = {
     randomValue: {type: Number},
-    fileSystem: {type: FileSystem},
+    fileSystem: {type: Promise},
     superRootDir: {type: SuperRootDir},
   };
 
@@ -28,7 +25,7 @@ export class TestParentComponent extends LitElement {
 
 
   render() {
-    console.warn(this.superRootDir);
+    console.log(this.superRootDir);
     return html`
       <main class="main">
         <terminal-app .superRootDir=${this.superRootDir} .path="${this.superRootDir.path}"
@@ -43,7 +40,8 @@ export class TestParentComponent extends LitElement {
   }
 
   async updateFS() {
-    this.fileSystem = await createFileSystem({type: 'emulated'}).then(fs => this.fileSystem = fs);
-    this.superRootDir = new SuperRootDir([this.fileSystem]);
+    const fileSystem = await createFileSystem({type: 'emulated'})
+    const fileSystem2 = await createFileSystem({name: 'test', type: 'emulated'})
+    this.superRootDir = new SuperRootDir([fileSystem, fileSystem2]);
   }
 }

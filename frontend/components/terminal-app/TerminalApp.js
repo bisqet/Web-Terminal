@@ -4,7 +4,7 @@ import "./components/terminal-history/terminal-history.js";
 import {terminalAppStyles} from "./terminalAppStyles.js";
 import {executeCommand} from "./components/commands/executeCommand.js";
 import {UserCommand} from "./components/commands/UserCommand.js";
-import {SuperRootDir} from "./components/FileSystem/FileSystem.js";
+import {SuperRootDir} from "./components/SuperRootDir/SuperRootDir.js";
 
 export class TerminalApp extends LitElement {
   static styles = terminalAppStyles;
@@ -25,15 +25,15 @@ export class TerminalApp extends LitElement {
   }
 
   render() {
-    console.warn(this.superRootDir);
+    console.log(this.superRootDir);
     console.log('render TerminalApp');
 
     return html`
       <div class="main scrollbar" @focusin="${() => {
-    this.setFocused(true);
-  }}" @focusout="${() => {
-  this.setFocused(false);
-}}" tabindex="-1">
+        this.setFocused(true);
+      }}" @focusout="${() => {
+        this.setFocused(false);
+      }}" tabindex="-1">
 
         <terminal-history .history="${this.history}"></terminal-history>
         <terminal-input @executeCommand="${this.executeCommand}" value="${this.randomValue}"
@@ -46,7 +46,7 @@ export class TerminalApp extends LitElement {
     const {input, path} = {...detail};
     console.log(detail);
     const userCommand = new UserCommand({input, path});
-    const commandResult = await executeCommand(userCommand);
+    const commandResult = await executeCommand({userCommand, superRootDir: this.superRootDir});
     this.history = [...this.history, commandResult];
   }
 

@@ -24,9 +24,11 @@ export class UserCommand {
   }) {
     this.input = input.trim();
     let parsedInput = new ParsedInput({});
-    if (this.input && this.input.length !== 0) {
+    if (this.input && this.input.length !== 0)
       parsedInput = UserCommand.parseInput(this.input);
-    }
+    this.pathArray = path.split('/');
+    this.fsPath = this.pathArray.slice(0, 2).join('/');
+    this.pathWithoutFsArray = this.pathArray.slice(2)
     this.abort = abort;
     this.command = parsedInput.command || command;
     this.options = [...parsedInput.options, ...options];
@@ -36,9 +38,9 @@ export class UserCommand {
   }
 
   static parseInput(input) {
-    if (input === undefined || input === '') {
+    if (input === undefined || input === '')
       return;
-    }
+
     // Regular expression to match tokens with or without quotes, including options with values
     const tokenRegex = /('[^']*'|"[^"]*"|\S+=(?:'[^']*'|"[^"]*"|\S+)|\S+)/g;
 
@@ -49,12 +51,13 @@ export class UserCommand {
 
     // Iterate over tokens and categorize them as options or arguments
     for(const token of tokens) {
-      if (token.startsWith('-')) {
-        options.push(token);
-      }else {
-        args.push(token);
-      }
-    }
+ if (token.startsWith('-'))
+   options.push(token);
+ else
+   args.push(token);
+}
+
+
 
     // Extract command
     const command = args.shift(); // Assuming the first non-option token is the command

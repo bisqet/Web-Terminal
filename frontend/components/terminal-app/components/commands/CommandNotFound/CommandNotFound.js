@@ -2,11 +2,10 @@ import {ExecutableCommand} from "../ExecutableCommand.js";
 
 
 export class CommandNotFound extends ExecutableCommand {
-  execute({userCommand}) {
+  execute({userCommand, superRootDir}) {
     const response = super.execute(userCommand);
-    if (userCommand.command.trim() === '') {
-      return response;
-    }
+    if (userCommand.command.trim() === '')return response;
+
     response.result = `${userCommand.command}: command not found`;
     return response;
   }
